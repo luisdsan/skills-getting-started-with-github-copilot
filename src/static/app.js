@@ -25,11 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (details.participants.length === 0) {
           participantsHTML += '<p class="no-participants">No participants yet</p>';
         } else {
-          participantsHTML += '<ul class="participants-list">';
-          details.participants.forEach(participant => {
-            participantsHTML += `<li>${participant}</li>`;
-          });
-          participantsHTML += '</ul>';
+          const participantsList = details.participants
+            .map(participant => `<li>${participant}</li>`)
+            .join('');
+          participantsHTML += `<ul class="participants-list">${participantsList}</ul>`;
         }
 
         activityCard.innerHTML = `
